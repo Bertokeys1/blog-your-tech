@@ -1,15 +1,14 @@
 const router = require("express").Router();
-const { Post } = require("../../models");
+const { Comment } = require("../../models");
 
 // Create new post
 router.post("/", async (req, res) => {
   try {
-    const newPost = await Post.create({
-      title: req.body.title,
+    const newComment = await Comment.create({
       content: req.body.content,
-      user_id: req.session.user_id,
+      comment_id: req.session.comment_id,
     });
-    res.status(200).json(newPost);
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -18,10 +17,9 @@ router.post("/", async (req, res) => {
 // Edit post
 router.put("/:id", async (req, res) => {
   try {
-    const updatedPost = await Post.update(
+    const updatedComment = await Comment.update(
       {
-        title: req.body.title,
-        content: req.body.content,
+        content: req.body.content
       },
       {
         where: {
@@ -29,7 +27,7 @@ router.put("/:id", async (req, res) => {
         },
       }
     );
-    res.status(200).json(updatedPost);
+    res.status(200).json(updatedComment);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
@@ -39,12 +37,12 @@ router.put("/:id", async (req, res) => {
 // Delete post
 router.delete("/:id", async (req, res) => {
   try {
-    const postData = await Post.destroy({
+    const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
       },
     });
-    res.status(200).json(postData);
+    res.status(200).json(commentData);
   } catch (err) {
     res.status(500).json(err);
   }
