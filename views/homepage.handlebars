@@ -2,9 +2,8 @@
 {{#each posts as |post| }}
 <div class="row mb-4 post">
   <div class="col-md-7">
-    <p>
-      {{post.content}}
-    </p>
+    <a href="/post/{{post.id}}">{{post.title}}</a>
+    <div>{{user.username}} posted on {{date_created}}</div>
   </div>
 </div>
 {{/each}}

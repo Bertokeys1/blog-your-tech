@@ -1,18 +1,18 @@
 const postFormHandler = async (event) => {
-    event.preventDefautlt();
+    event.preventDefault();
 
-    const postTitle = document.querySelector();
-    const postContent = document.querySelector();
-
-    if (postTitle && postContent) {
-        const response = await fetch('/api/post', {
+    const title = document.querySelector("#postTitle").value;
+    const content = document.querySelector("#postContent").value;
+console.log(title)
+    if (title && content) {
+        const response = await fetch('/api/posts', {
             method: 'POST',
-            body: JSON.stringify({postTitle, postContent}),
+            body: JSON.stringify({title, content}),
             headers: { 'content-type': 'application/json'},
         });
         
         if (response.ok) {
-            
+            document.location.replace('/dashboard','/post')
         }
     }
 }

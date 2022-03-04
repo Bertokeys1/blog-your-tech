@@ -11,6 +11,11 @@
       integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
       crossorigin="anonymous"
     />
+        <script>
+      window.dataLayer = window.dataLayer || []; function
+      gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config',
+      'UA-221279833-2');
+    </script>
   </head>
 
   <body>
@@ -22,6 +27,7 @@
         <nav>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
+            <a href="/dashboard">Dashboard</a>
             <button class="no-button" id="logout">logout</button>
           {{else}}
             <a href="/login">login</a>
@@ -32,7 +38,6 @@
         <!-- Render the sub layout -->
         {{{body}}}
 
-        {{#each posts as |post|}}
       </body>
       <footer>
 
@@ -43,6 +48,7 @@
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}
+
   </body>
 
 </html>
