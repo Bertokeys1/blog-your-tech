@@ -1,18 +1,21 @@
 <div class="row">
   <div class="col-md-6">
-      <div class="form-group">
-        <label for="postTitle">{{post.title}}</label>
-        <input class="form-input" type="text" id="postTitle" />
-      </div>
 
     <form class="form edit-post-form">
       <div class="form-group">
-        <label for="postContent">{{post.content}}</label>
-        <textarea class="form-input"  id="postContent"></textarea>
+        <label for="postTitle">Post tittle:</label>
+        <input class="form-input" type="text" id="postTitle" value="{{post.title}}" />
       </div>
+      <input type="hidden" id="postId" value="{{post.id}}" />
+      <div class="form-group">
+        <label for="postContent">Post content:</label>
+      </div>
+        <textarea class="form-input"  id="postContent">{{post.content}}</textarea>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Edit</button>
       </div>
     </form>
   </div>
 </div>
+
+<script src="/js/update.js"></script>

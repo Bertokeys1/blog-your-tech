@@ -18,7 +18,6 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 router.get("/post/:id", async (req, res) => {
-  console.log("Alberto");
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -30,14 +29,12 @@ router.get("/post/:id", async (req, res) => {
       ],
     });
 
-    const posts = postData.get({ plain: true });
+    const post = postData.get({ plain: true });
+    console.log(post);
 
-    console.log(posts);
-
-    
     res.render("postview", {
-      posts,
-      // logged_in: req.session.logged_in,
+      post,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
