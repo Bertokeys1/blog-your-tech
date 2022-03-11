@@ -14,10 +14,23 @@ const postFormHandler = async (event) =>{
         });
         
         if (response.ok) {
-            document.location.replace(`/post/${postId}`)
+            document.location.replace(`/dashboard`)
         }
     }
 }
+
+const deletePost = async () => {
+    const response = await fetch(`/api/posts/${postId}`, {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        document.location.replace(`/dashboard`)
+    }
+}
+
+document
+    .querySelector('#deleteBtn')
+    .addEventListener('click', deletePost);
 
 document
     .querySelector('.edit-post-form')

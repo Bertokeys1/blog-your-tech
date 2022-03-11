@@ -28,50 +28,20 @@ router.get("/new", withAuth, async (req, res) => {
   });
 });
 
-router.get("/post/:id", async (req, res) => {
-    const challengeData = await Challenge.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ["id", "username"],
-          through: {
-            model: UserChallenge,
-          },
-        },
-        {
-          model: Post,
-          attributes: ["text", "date_created"],
-          include: [
-            {
-              model: User,
-              attributes: ["id", "username"],
-            }
-          ]
-        }
-      ],
-    });
-    // const posts = postData.get({ plain: true });
-    console.log(challenge);
-  
-    const postData = await Post.findAll({
-      where: {
-        challenge_id: req.params.id,
-      },
-      include: [
-        {
-          model: User,
-          attributes: ["id", "username"],
-        }
-      ]
-    });
-  
-    const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render("posts", {
-      // ...posts,
-      posts,
-      // logged_in: req.session.logged_in,
+router.get("/post/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id)
+
+    const post = postData.get({ plain: true });
+
+    res.render("postview", {
+      post,
+      logged_in: req.session.logged_in,
     });
-  });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

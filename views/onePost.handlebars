@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <div>
+      <h2>this is the title of the post</h2>
+      <div>
+        <p>this is the post body content</p>
+      </div>
+      <div>
+        <p>Created By User on 2/2/22</p>
+      </div>
+    </div>
+
+    <div>
+      <h3>Comments</h3>
+
+      <div>
+        {{! all the comments go here }}
+        <p>this is a comment</p>
+        <p>Posted By User on 2/2/22</p>
+      </div>
+    </div>
+
+    <div>
+      <h3>Got Something to Say?</h3>
+      <form class="form edit-post-form">
+        <div class="form-group">
+
+        <div class="form-group">
+          <label for="postContent">Comment:</label>
+        </div>
+        <textarea
+          class="form-input"
+          id="postContent"
+        ></textarea>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
