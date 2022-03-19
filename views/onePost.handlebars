@@ -2,12 +2,12 @@
   <div class="col-md-6">
 
     <div>
-      <h2>this is the title of the post</h2>
+      <h2>{{post.title}}</h2>
       <div>
-        <p>this is the post body content</p>
+        <p>{{post.content}}</p>
       </div>
       <div>
-        <p>Created By User on 2/2/22</p>
+        <p>{{date_created}}</p>
       </div>
     </div>
 
@@ -16,7 +16,7 @@
 
       <div>
         {{! all the comments go here }}
-        <p>this is a comment</p>
+        <p>{{commentContent}}</p>
         <p>Posted By User on 2/2/22</p>
       </div>
     </div>

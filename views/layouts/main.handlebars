@@ -28,8 +28,8 @@
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
             <a href="/dashboard">Dashboard</a>
-            <a href="/login">login</a>
-            <a  href="/logout">logout</a>
+            <a id="login-form" href="/login">login</a>
+            <a id="logout" href="/logout">logout</a>
           {{!-- {{else}} --}}
           {{/if}}
         </nav>
